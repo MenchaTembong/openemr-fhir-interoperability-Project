@@ -132,15 +132,44 @@ The last two are the evidence behind
 Screenshots from the work. Credentials, client identifiers, session tokens and
 bearer tokens are blacked out.
 
+Click any image to open it full size. They are screens of dense interface text,
+so they are worth enlarging rather than squinting at.
+
+### Turning the FHIR API on
+
+OpenEMR ships with the FHIR interface disabled. Enabling the connectors is the
+first step, and Site Address Override has to be set or OAuth2 builds its URLs
+wrong.
+
+![OpenEMR connector settings with the FHIR REST API and OAuth2 options enabled](images/openemr-fhir-enable.png)
+
+### Registering a client and scoping it
+
+A confidential client, granted read-only access to exactly the resources needed.
+New clients arrive disabled and the secret is shown once.
+
+![OpenEMR client registration showing the FHIR scopes granted](images/oauth2-client-registration.png)
+
+### Getting a token
+
+`POST /oauth2/default/token` returning `200 OK`. The credentials and the
+returned token are blacked out.
+
+![Postman OAuth2 token request returning HTTP 200 OK](images/oauth2-token-request.png)
+
+### Retrieving clinical data
+
+`GET /fhir/Observation` with a bearer token, returning a result bundle.
+
+![Authenticated FHIR Observation request returning a bundle](images/fhir-observation-request.png)
+
+### The rest
+
 | | |
 |---|---|
-| [Enabling the FHIR API](images/openemr-fhir-enable.png) | Connector settings with the FHIR REST API and OAuth2 options turned on |
 | [Connector configuration](images/openemr-connectors-config.png) | US Core version and OAuth2 approval settings |
-| [Client registration](images/oauth2-client-registration.png) | A registered API client and the scopes granted to it |
-| [Token request](images/oauth2-token-request.png) | OAuth2 token exchange returning 200 OK |
 | [Capability statement](images/fhir-capability-statement.png) | `GET /fhir/metadata`, confirming FHIR 4.0.1 |
 | [Patient query](images/fhir-patient-request.png) | Authenticated `GET /fhir/Patient` |
-| [Observation query](images/fhir-observation-request.png) | `GET /fhir/Observation` returning a result bundle |
 | [Encounter query](images/fhir-encounter-request.png) | `GET /fhir/Encounter` with SNOMED CT class coding |
 | [Procedures menu](images/openemr-procedures-menu.png) | Lab menu items, inactive until a patient chart is open |
 
