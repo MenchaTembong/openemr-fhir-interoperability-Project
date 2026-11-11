@@ -129,8 +129,10 @@ The last two are the evidence behind
 
 ## Evidence
 
-Screenshots from the work. Credentials, client identifiers, session tokens and
-bearer tokens are blacked out.
+Screenshots from the work, shown as captured. The only things covered are the
+client secret and the password, because those stay valid until revoked. Access
+tokens, the client identifier and session identifiers are visible: they expired
+within the hour, back in July.
 
 Click any image to open it full size. They are screens of dense interface text,
 so they are worth enlarging rather than squinting at.
@@ -152,8 +154,9 @@ New clients arrive disabled and the secret is shown once.
 
 ### Getting a token
 
-`POST /oauth2/default/token` returning `200 OK`. The credentials and the
-returned token are blacked out.
+`POST /oauth2/default/token` returning `200 OK`, against a local Docker
+instance. The returned access token is shown in full and expired long ago. Only
+the password and client secret stay covered.
 
 ![Postman OAuth2 token request returning HTTP 200 OK](images/oauth2-token-request.png)
 
