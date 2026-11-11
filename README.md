@@ -8,7 +8,7 @@ end to end through a configured clinical workflow.
 COMP 4090 Work Integrated Project, Spring/Summer 2026
 
 [Portfolio page](https://menchatembong.github.io/openemr-fhir-interoperability-Project/) ·
-[LinkedIn](https://www.linkedin.com/in/menchatembong) ·
+[LinkedIn](https://www.linkedin.com/in/mencha-tembong-669078225) ·
 [Video walkthroughs](https://www.youtube.com/@menchaemmanuel3762) ·
 <Mencha.tembong@georgebrown.ca>
 
