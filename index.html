@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mencha Tembong — Healthcare Interoperability</title>
+<meta name="description" content="Hands-on FHIR R4, LOINC and OpenEMR interoperability work: enabling a secured clinical API, loading terminology, and testing a laboratory order end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F8FA;
+  --card:#FFFFFF;
+  --ink:#121A21;
+  --ink-2:#2E3E4B;
+  --muted:#5D6F7D;
+  --rule:#D2DBE3;
+  --rule-soft:#E6ECF1;
+  --flag:#A82E18;
+  --flag-bg:#FBEDEA;
+  --ok:#1C6450;
+  --ok-bg:#E9F3EF;
+  --link:#17506E;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wrap:68rem;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme:dark){
+    --paper:#0E151B;--card:#141E26;--ink:#E8EFF4;--ink-2:#C2D2DD;--muted:#8CA2B1;
+    --rule:#2A3945;--rule-soft:#1F2C36;--flag:#F08A72;--flag-bg:#2B1813;
+    --ok:#6FC3A6;--ok-bg:#12241E;--link:#8FC6E6;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E151B;--card:#141E26;--ink:#E8EFF4;--ink-2:#C2D2DD;--muted:#8CA2B1;
+  --rule:#2A3945;--rule-soft:#1F2C36;--flag:#F08A72;--flag-bg:#2B1813;
+  --ok:#6FC3A6;--ok-bg:#12241E;--link:#8FC6E6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--link);outline-offset:3px;border-radius:2px}
+p{max-width:62ch}
+h1,h2,h3{line-height:1.2;letter-spacing:-.015em;margin:0}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:1px solid var(--rule);background:var(--card)}
+.mast-in{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;
+  justify-content:space-between;padding:18px 16px;max-width:var(--wrap);margin:0 auto}
+.who{font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
+.who span{display:block;font-weight:400;font-size:.86rem;color:var(--muted);letter-spacing:0}
+.mast nav{display:flex;gap:20px;font-size:.9rem}
+.mast nav a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+.mast nav a:hover{border-bottom-color:var(--link);color:var(--link)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(44px,9vw,92px) 0 clamp(36px,6vw,60px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,21rem);gap:clamp(28px,5vw,56px);align-items:start}
+.code-obj{font-family:var(--mono);font-weight:600;letter-spacing:-.06em;white-space:nowrap;
+  font-size:clamp(4rem,15vw,9.5rem);line-height:.88;color:var(--ink);
+  display:block;word-break:break-word}
+.code-name{font-size:clamp(1.05rem,2.4vw,1.45rem);color:var(--ink-2);
+  margin-top:14px;font-weight:500}
+.code-sub{color:var(--muted);font-size:.95rem;margin-top:4px}
+.lede{margin-top:30px;font-size:1.08rem;color:var(--ink-2)}
+.lede strong{color:var(--ink);font-weight:600}
+
+/* identity slip */
+.slip{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:4px 0;box-shadow:0 1px 0 var(--rule-soft)}
+.slip-hd{font-size:.82rem;color:var(--muted);padding:10px 16px 10px;
+  border-bottom:1px solid var(--rule-soft)}
+.slip-row{display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+  padding:9px 16px;border-bottom:1px solid var(--rule-soft)}
+.slip-row:last-child{border-bottom:0}
+.slip-row dt{color:var(--muted);font-size:.88rem;white-space:nowrap}
+.slip-row dd{margin:0;font-family:var(--mono);font-size:.82rem;color:var(--ink-2);
+  text-align:right;word-break:break-word}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,19rem);
+  gap:clamp(28px,5vw,56px);align-items:start}
+.about-h{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;margin-bottom:16px}
+.about-grid p{color:var(--ink-2);margin:0 0 14px}
+.about-grid p:last-child{margin-bottom:0}
+/* bio slip: values are prose, so stack them and set in sans */
+.slip--bio .slip-row{display:block;padding:11px 16px}
+.slip--bio dt{font-size:.8rem;color:var(--muted)}
+.slip--bio dd{text-align:left;font-family:var(--sans);font-size:.92rem;
+  color:var(--ink);margin-top:2px;line-height:1.45}
+
+/* ---------- sections ---------- */
+section{padding:clamp(40px,6vw,68px) 0;border-top:1px solid var(--rule)}
+.sec-hd{margin-bottom:26px}
+.sec-hd h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600}
+.sec-hd p{color:var(--muted);margin:8px 0 0}
+
+/* work list */
+.work{display:grid;gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--card)}
+.work-item{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:4px 28px;
+  padding:16px 18px;border-bottom:1px solid var(--rule-soft)}
+.work-item:last-child{border-bottom:0}
+.work-item h3{font-size:.97rem;font-weight:600;color:var(--ink)}
+.work-item p{margin:0;font-size:.94rem;color:var(--muted);max-width:60ch}
+
+/* findings — flagged like abnormal results */
+.finding{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--flag);
+  border-radius:3px;padding:18px 20px;margin-bottom:14px}
+.finding:last-child{margin-bottom:0}
+.finding-top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:baseline;justify-content:space-between}
+.finding h3{font-size:1.02rem;font-weight:600}
+.flag{font-family:var(--mono);font-size:.74rem;font-weight:600;color:var(--flag);
+  background:var(--flag-bg);border:1px solid var(--flag);border-radius:2px;padding:2px 7px;white-space:nowrap}
+.finding p{margin:10px 0 0;font-size:.94rem;color:var(--ink-2)}
+pre{font-family:var(--mono);font-size:.82rem;line-height:1.55;background:var(--paper);
+  border:1px solid var(--rule-soft);border-radius:3px;padding:12px 14px;overflow-x:auto;margin:12px 0 0}
+pre .bad{color:var(--flag);font-weight:600}
+pre .good{color:var(--ok);font-weight:600}
+
+/* docs index */
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:14px}
+.doc{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:16px 18px;text-decoration:none;display:block;color:inherit}
+.doc:hover{border-color:var(--link)}
+.doc-n{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.doc h3{font-size:.97rem;font-weight:600;margin-top:3px;color:var(--link)}
+.doc p{font-size:.89rem;color:var(--muted);margin:5px 0 0}
+
+/* evidence */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:18px}
+figure{margin:0;background:var(--card);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+figure img{width:100%;display:block;border-bottom:1px solid var(--rule-soft);background:#fff}
+figcaption{padding:11px 14px;font-size:.88rem;color:var(--muted)}
+
+/* stack / links */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-radius:2px;padding:4px 9px}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:14px}
+.out a{display:block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:16px 18px;text-decoration:none;color:inherit}
+.out a:hover{border-color:var(--link)}
+.out strong{display:block;color:var(--link);font-size:.98rem}
+.out span{color:var(--muted);font-size:.88rem}
+
+footer{border-top:1px solid var(--rule);padding:30px 0 50px;color:var(--muted);font-size:.9rem}
+footer p{max-width:70ch}
+
+@media (max-width:760px){
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .work-item{grid-template-columns:1fr;gap:3px}
+}
+
+/* one orchestrated reveal, on the hero only */
+@media (prefers-reduced-motion:no-preference){
+  .code-obj,.code-name,.code-sub,.lede,.slip{animation:rise .7s cubic-bezier(.22,.7,.3,1) backwards}
+  .code-name{animation-delay:.07s}.code-sub{animation-delay:.1s}
+  .slip{animation-delay:.14s}.lede{animation-delay:.2s}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="who">Mencha Tembong
+      <span>Health Informatics, George Brown College</span></div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#findings">Findings</a>
+      <a href="#docs">Write-ups</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section class="hero" style="border-top:0">
+    <div class="hero-grid">
+      <div>
+        <span class="code-obj">4548&#8209;4</span>
+        <div class="code-name">Hemoglobin A1c</div>
+        <div class="code-sub">The LOINC code I configured, ordered, resulted and retrieved.</div>
+        <div class="lede">
+          <p>A laboratory can call this test HbA1c, Glycated Hemoglobin or A1C. A
+          receiving system matching on the name gets it wrong. Matching on
+          <strong>4548-4</strong> cannot.</p>
+          <p>I spent the Spring/Summer 2026 term on the interoperability team of a
+          student EMR project, making that exchange work in practice: securing a
+          FHIR R4 API on OpenEMR, loading the terminology behind it, and testing a
+          lab order from the moment a physician places it to the moment the result
+          comes back out as a structured resource.</p>
+        </div>
+      </div>
+
+      <dl class="slip">
+        <div class="slip-hd">Where this one code lives</div>
+        <div class="slip-row"><dt>OpenEMR</dt><dd>code_types · ct_id 110</dd></div>
+        <div class="slip-row"><dt>HL7 v2</dt><dd>OBX-3</dd></div>
+        <div class="slip-row"><dt>FHIR R4</dt><dd>Observation.code.coding</dd></div>
+        <div class="slip-row"><dt>C-CDA</dt><dd>observation/code</dd></div>
+        <div class="slip-row"><dt>System URI</dt><dd>http://loinc.org</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <h2 class="about-h">From the bench to the interface</h2>
+        <p>I worked in a hospital laboratory in Yaoundé before I came to health
+        informatics. I have run the tests this project codes for, calibrated the
+        analysers, kept the quality control, and handed results to clinicians who
+        had to act on them that afternoon.</p>
+        <p>That is why the laboratory side of interoperability is where I am most
+        useful. When a reference range is stored as free text, or a result arrives
+        under a local code wearing a LOINC label, I know what it costs at the far
+        end: a repeated draw, a delayed diagnosis, a clinician deciding on a number
+        that does not mean what the chart says it means.</p>
+        <p>My responsibility used to end once an accurate result existed. This
+        project showed me how far that result still has to travel, and how much of
+        the journey is settled by configuration choices made long before anyone
+        draws a sample.</p>
+      </div>
+      <dl class="slip slip--bio">
+        <div class="slip-hd">Background</div>
+        <div class="slip-row"><dt>Now</dt>
+          <dd>Health Informatics postgraduate certificate, George Brown College. Dean's List, 3.9.</dd></div>
+        <div class="slip-row"><dt>Before that</dt>
+          <dd>BSc Clinical Laboratory Sciences, valedictorian.</dd></div>
+        <div class="slip-row"><dt>At the bench</dt>
+          <dd>Medical Laboratory Technologist, Yaoundé University Teaching Hospital.</dd></div>
+        <div class="slip-row"><dt>In the field</dt>
+          <dd>eHealth deployment for a national polio response, Cameroon Ministry of Public Health.</dd></div>
+        <div class="slip-row"><dt>Published</dt>
+          <dd>Two peer-reviewed papers on parasitic infection and malaria diagnostics.</dd></div>
+        <div class="slip-row"><dt>Languages</dt>
+          <dd>English and French.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-hd">
+      <h2>What I built and tested</h2>
+      <p>On a shared OpenEMR 7.0.2 instance running on AWS.</p>
+    </div>
+    <div class="work">
+      <div class="work-item">
+        <h3>Secured the FHIR R4 API</h3>
+        <p>Enabled the FHIR and REST connectors, registered an OAuth2 client, and
+        scoped it to read-only access on Patient, Observation and Encounter.</p>
+      </div>
+      <div class="work-item">
+        <h3>Proved live data exchange</h3>
+        <p>Authenticated in Postman and retrieved Patient, Observation, Encounter
+        and DiagnosticReport resources from the running instance.</p>
+      </div>
+      <div class="work-item">
+        <h3>Loaded clinical terminology</h3>
+        <p>Imported LOINC and ICD-10 into OpenEMR. LOINC is supported as code type
+        110 but ships empty, so the codes have to be brought in deliberately.</p>
+      </div>
+      <div class="work-item">
+        <h3>Made a test orderable</h3>
+        <p>Configured Hemoglobin A1c against LOINC 4548-4 with units and a
+        reference range, so a physician could order it and a result could be
+        flagged against the range.</p>
+      </div>
+      <div class="work-item">
+        <h3>Mapped the data elements</h3>
+        <p>Set OpenEMR's internal fields against FHIR R4, HL7 v2 and C-CDA, then
+        wrote the future-state recommendation that followed from it.</p>
+      </div>
+      <div class="work-item">
+        <h3>Tested it as the lab role</h3>
+        <p>Laboratory and interoperability tester in a scripted 47-step end-to-end
+        test, responsible for verifying the coding, processing the order and
+        entering the result.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="findings">
+    <div class="sec-hd">
+      <h2>What the data showed</h2>
+      <p>A lab report flags the values that fall outside the expected range. These
+      are the ones I found in ours. Each is reproducible from the sample payloads
+      in the repository.</p>
+    </div>
+
+    <article class="finding">
+      <div class="finding-top">
+        <h3>LOINC codes carried a redundant prefix</h3>
+        <span class="flag">BREAKS MATCHING</span>
+      </div>
+      <p>The system URI already identifies the code system, so repeating it inside
+      the value is wrong. A consumer searching for <code>2093-3</code> never finds
+      <code>LOINC:2093-3</code>. It reads correctly to a human and is invisible to
+      a machine, which is the worst of both.</p>
+<pre>"system": "http://loinc.org",
+"code":   <span class="bad">"LOINC:2093-3"</span>   <span class="good">→ should be "2093-3"</span></pre>
+    </article>
+
+    <article class="finding">
+      <div class="finding-top">
+        <h3>Local codes presented as LOINC</h3>
+        <span class="flag">MISLEADING</span>
+      </div>
+      <p>Some results declared the LOINC system URI while carrying values that are
+      not LOINC codes. Hemoglobin is <code>718-7</code>. A receiving system has no
+      way to know the claim is false.</p>
+<pre>"system":  "http://loinc.org",
+"code":    <span class="bad">"1001"</span>,
+"display": "Hemoglobin Result"</pre>
+    </article>
+
+    <article class="finding">
+      <div class="finding-top">
+        <h3>Environments drifted apart</h3>
+        <span class="flag">SCOPE RISK</span>
+      </div>
+      <p>The hosted instance and a newer local build advertised different FHIR
+      capabilities. Specimen and ServiceRequest existed locally and not on the
+      shared server, so a workflow proven on a laptop could not be promised on the
+      environment we actually presented from.</p>
+    </article>
+
+    <article class="finding">
+      <div class="finding-top">
+        <h3>Reference ranges arrive as free text</h3>
+        <span class="flag">DESIGN LIMIT</span>
+      </div>
+      <p>FHIR models a range as structured low and high quantities. OpenEMR stores
+      the string <code>&lt; 5.7</code>. The abnormal flag works because OpenEMR
+      evaluates it internally; anything downstream has to parse prose first.</p>
+    </article>
+  </section>
+
+  <section id="docs">
+    <div class="sec-hd">
+      <h2>Write-ups</h2>
+      <p>How each piece was actually done, including what went wrong.</p>
+    </div>
+    <div class="docs">
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/01-aws-deployment.md">
+        <div class="doc-n">01</div><h3>Cloud deployment</h3>
+        <p>Why it was hosted, and why three environments is one more than it sounds.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/02-fhir-oauth2-setup.md">
+        <div class="doc-n">02</div><h3>FHIR R4 and OAuth2</h3>
+        <p>Enabling the API, scopes, tokens, and the settings that fail silently.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/03-terminology-loinc-icd10.md">
+        <div class="doc-n">03</div><h3>Terminology</h3>
+        <p>Importing LOINC and ICD-10, and where a code sits in each standard.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/04-lab-order-workflow.md">
+        <div class="doc-n">04</div><h3>Lab order workflow</h3>
+        <p>Turning a code into something a clinician can order and a tech can result.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/05-data-element-mapping.md">
+        <div class="doc-n">05</div><h3>Data element mapping</h3>
+        <p>OpenEMR fields across FHIR R4, HL7 v2 and C-CDA, and what it exposed.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/06-integrated-testing.md">
+        <div class="doc-n">06</div><h3>Integrated testing</h3>
+        <p>Being the lab role in a scripted end-to-end test, and what it taught me.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/07-findings.md">
+        <div class="doc-n">07</div><h3>Findings</h3>
+        <p>Conformance problems in the retrieved data, with the evidence.</p></a>
+      <a class="doc" href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project/blob/main/docs/08-connecting-a-laboratory.md">
+        <div class="doc-n">08</div><h3>Connecting a laboratory</h3>
+        <p>HL7 v2 orders and results, transport, and why OLIS needs certification.</p></a>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <div class="sec-hd">
+      <h2>Evidence</h2>
+      <p>Credentials, client identifiers and bearer tokens are blacked out.</p>
+    </div>
+    <div class="shots">
+      <figure><img src="images/openemr-fhir-enable.png" alt="OpenEMR connector settings with the FHIR REST API and OAuth2 options enabled" loading="lazy">
+        <figcaption>Enabling the FHIR R4 and REST connectors.</figcaption></figure>
+      <figure><img src="images/oauth2-client-registration.png" alt="OpenEMR client registration screen showing granted FHIR scopes" loading="lazy">
+        <figcaption>A registered API client and its read-only scopes.</figcaption></figure>
+      <figure><img src="images/oauth2-token-request.png" alt="Postman OAuth2 token request returning HTTP 200 OK" loading="lazy">
+        <figcaption>Token exchange returning 200 OK.</figcaption></figure>
+      <figure><img src="images/fhir-capability-statement.png" alt="FHIR capability statement response confirming version 4.0.1" loading="lazy">
+        <figcaption>Capability statement confirming FHIR 4.0.1.</figcaption></figure>
+      <figure><img src="images/fhir-observation-request.png" alt="Authenticated FHIR Observation request returning a result bundle" loading="lazy">
+        <figcaption>An authenticated Observation query.</figcaption></figure>
+      <figure><img src="images/fhir-encounter-request.png" alt="FHIR Encounter resource showing SNOMED CT coding" loading="lazy">
+        <figcaption>Encounter with SNOMED CT visit coding.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-hd"><h2>Stack</h2></div>
+    <div class="chips">
+      <span class="chip">OpenEMR 7.0.2</span><span class="chip">FHIR R4 (4.0.1)</span>
+      <span class="chip">HL7 v2</span><span class="chip">C-CDA</span>
+      <span class="chip">LOINC</span><span class="chip">ICD-10</span>
+      <span class="chip">SNOMED CT</span><span class="chip">OAuth2</span>
+      <span class="chip">SMART on FHIR</span><span class="chip">AWS EC2</span>
+      <span class="chip">Docker</span><span class="chip">MariaDB</span>
+      <span class="chip">Postman</span><span class="chip">Swagger UI</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-hd">
+      <h2>Get in touch</h2>
+      <p>I am looking for interoperability, clinical data and health informatics
+      work in Toronto.</p>
+    </div>
+    <div class="out">
+      <a href="mailto:Mencha.tembong@georgebrown.ca"><strong>Mencha.tembong@georgebrown.ca</strong>
+        <span>Email</span></a>
+      <a href="https://www.linkedin.com/in/menchatembong"><strong>linkedin.com/in/menchatembong</strong>
+        <span>LinkedIn</span></a>
+      <a href="https://github.com/MenchaTembong"><strong>github.com/MenchaTembong</strong>
+        <span>GitHub</span></a>
+    </div>
+    <div class="out" style="margin-top:14px">
+      <a href="https://github.com/MenchaTembong/openemr-fhir-interoperability-Project"><strong>This repository</strong>
+        <span>Write-ups, sanitised FHIR payloads and evidence.</span></a>
+      <a href="https://www.youtube.com/@menchaemmanuel3762"><strong>Video walkthroughs</strong>
+        <span>Recorded demonstrations of the workflow.</span></a>
+      <a href="https://mgfhc.github.io/"><strong>Cohort project showcase</strong>
+        <span>The full HIT4EMR project and all eight subteams.</span></a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Maple Grove Family Health Centre is a fictional clinic built for COMP 4090,
+    the Work Integrated Project course in George Brown College's Health
+    Informatics programme, Spring/Summer 2026. Every patient referenced here is
+    invented and every laboratory value is synthetic. This was an educational
+    simulation, not a production deployment or a certified system, and the
+    external laboratory transmission was simulated throughout.</p>
+  </div>
+</footer>
+
+</body>
+</html>

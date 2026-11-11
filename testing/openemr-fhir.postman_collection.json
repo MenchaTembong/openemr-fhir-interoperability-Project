@@ -1,0 +1,225 @@
+{
+  "info": {
+    "_postman_id": "b7e1a4c2-5f3d-4a8e-9c21-0d6f8a3b1e40",
+    "name": "OpenEMR FHIR R4",
+    "description": "Authenticate against an OpenEMR instance and retrieve clinical data over FHIR R4.\n\nRun the requests in order. `Get access token` stores the token on the collection, so every request after it is already authorised.\n\nSet `baseUrl`, `clientId` and `clientSecret` in the environment before you start. Nothing in this collection carries a credential.\n\nSee TESTING.md in the repository for setup.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://localhost:9300", "type": "string" },
+    { "key": "clientId", "value": "", "type": "string" },
+    { "key": "clientSecret", "value": "", "type": "string" },
+    { "key": "username", "value": "", "type": "string" },
+    { "key": "password", "value": "", "type": "string" },
+    { "key": "scope", "value": "openid api:fhir user/Patient.read user/Observation.read user/Encounter.read user/DiagnosticReport.read user/Condition.read", "type": "string" },
+    { "key": "accessToken", "value": "", "type": "string" },
+    { "key": "patientId", "value": "", "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "0 · Capability statement (no auth)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "const b = pm.response.json();",
+          "pm.test('is a CapabilityStatement', () => pm.expect(b.resourceType).to.eql('CapabilityStatement'));",
+          "pm.test('speaks FHIR R4', () => pm.expect(b.fhirVersion).to.match(/^4\\./));",
+          "console.log('OpenEMR', b.software && b.software.version, '| FHIR', b.fhirVersion);",
+          "const names = (b.rest && b.rest[0].resource || []).map(r => r.type);",
+          "console.log('resources advertised:', names.length, names.join(', '));"
+        ]}
+      }],
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": { "raw": "{{baseUrl}}/apis/default/fhir/metadata", "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","metadata"] },
+        "description": "Needs no token. The fastest way to confirm the FHIR API is enabled and reachable, and to see which resources this build actually supports. Run this first: if it fails, nothing after it will work."
+      }
+    },
+    {
+      "name": "1 · Get access token",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "const b = pm.response.json();",
+          "pm.test('returned an access token', () => pm.expect(b).to.have.property('access_token'));",
+          "if (b.access_token) {",
+          "  pm.collectionVariables.set('accessToken', b.access_token);",
+          "  console.log('token stored; expires in', b.expires_in, 'seconds');",
+          "}"
+        ]}
+      }],
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "grant_type", "value": "password" },
+            { "key": "client_id", "value": "{{clientId}}" },
+            { "key": "client_secret", "value": "{{clientSecret}}" },
+            { "key": "username", "value": "{{username}}" },
+            { "key": "password", "value": "{{password}}" },
+            { "key": "scope", "value": "{{scope}}" },
+            { "key": "user_role", "value": "users" }
+          ]
+        },
+        "url": { "raw": "{{baseUrl}}/oauth2/default/token", "host": ["{{baseUrl}}"], "path": ["oauth2","default","token"] },
+        "description": "Exchanges credentials for a bearer token and saves it to the collection variable `accessToken`.\n\nThis uses the password grant, which OpenEMR itself labels 'not considered secure'. It is enabled here because it makes the exchange legible in one request. Production SMART on FHIR uses the authorization code flow, where the user authenticates against the EMR directly and the client never sees their password.\n\nIf this returns an error: check the client is ENABLED (newly registered clients are disabled), check Site Address Override is set, and check the scopes requested were granted at registration."
+      }
+    },
+    {
+      "name": "2 · All patients",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "const b = pm.response.json();",
+          "pm.test('is a Bundle', () => pm.expect(b.resourceType).to.eql('Bundle'));",
+          "console.log('patients returned:', b.total);",
+          "const first = b.entry && b.entry[0];",
+          "if (first) {",
+          "  pm.collectionVariables.set('patientId', first.resource.id);",
+          "  console.log('patientId stored:', first.resource.id);",
+          "}"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": { "raw": "{{baseUrl}}/apis/default/fhir/Patient", "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Patient"] },
+        "description": "Stores the first patient's id as `patientId` so the requests below can filter by it."
+      }
+    },
+    {
+      "name": "3 · Patient by id",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "pm.test('is a Patient', () => pm.expect(pm.response.json().resourceType).to.eql('Patient'));"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": { "raw": "{{baseUrl}}/apis/default/fhir/Patient/{{patientId}}", "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Patient","{{patientId}}"] }
+      }
+    },
+    {
+      "name": "4 · Laboratory observations",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "const b = pm.response.json();",
+          "console.log('observations returned:', b.total);",
+          "",
+          "// Conformance check: when system is LOINC, the code must be the bare LOINC code.",
+          "const bad = [];",
+          "(b.entry || []).forEach(e => {",
+          "  ((e.resource.code && e.resource.code.coding) || []).forEach(c => {",
+          "    if (c.system === 'http://loinc.org' && !/^\\d+-\\d$/.test(c.code)) bad.push(c.code);",
+          "  });",
+          "});",
+          "if (bad.length) console.warn('non-conformant LOINC codes:', [...new Set(bad)].join(', '));",
+          "pm.test('LOINC codes are well formed', () => pm.expect(bad, 'codes under http://loinc.org must match \\\\d+-\\\\d').to.be.empty);"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": {
+          "raw": "{{baseUrl}}/apis/default/fhir/Observation?category=laboratory",
+          "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Observation"],
+          "query": [{ "key": "category", "value": "laboratory" }]
+        },
+        "description": "Retrieves lab results and checks the LOINC coding is conformant.\n\nThe test will FAIL against an instance whose codes carry a 'LOINC:' prefix, which is exactly the defect documented in docs/07-findings.md. That failure is the point: it is a working check you can run against any OpenEMR."
+      }
+    },
+    {
+      "name": "5 · Observations for one patient",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "console.log('observations for patient:', pm.response.json().total);"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": {
+          "raw": "{{baseUrl}}/apis/default/fhir/Observation?patient={{patientId}}",
+          "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Observation"],
+          "query": [{ "key": "patient", "value": "{{patientId}}" }]
+        }
+      }
+    },
+    {
+      "name": "6 · Search by LOINC code",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": {
+          "raw": "{{baseUrl}}/apis/default/fhir/Observation?code=http://loinc.org|4548-4",
+          "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Observation"],
+          "query": [{ "key": "code", "value": "http://loinc.org|4548-4" }]
+        },
+        "description": "Token search for Hemoglobin A1c by LOINC code.\n\nThis is the request that proves why the coding has to be exact. A result stored as 'LOINC:4548-4' will not be returned here, even though it is visibly an HbA1c to anyone reading the chart."
+      }
+    },
+    {
+      "name": "7 · Diagnostic reports",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "const b = pm.response.json();",
+          "console.log('reports returned:', b.total);",
+          "",
+          "// Each report should say what was tested, and should not list a result twice.",
+          "(b.entry || []).forEach(e => {",
+          "  const r = e.resource;",
+          "  const coding = (r.code && r.code.coding && r.code.coding[0]) || {};",
+          "  if (coding.code === 'UNK') console.warn('report', r.id, 'has no test code');",
+          "  const refs = (r.result || []).map(x => x.reference);",
+          "  if (refs.length !== new Set(refs).size) console.warn('report', r.id, 'lists a duplicate result');",
+          "});"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": { "raw": "{{baseUrl}}/apis/default/fhir/DiagnosticReport", "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","DiagnosticReport"] },
+        "description": "Warns on the two report-level defects documented in docs/07-findings.md: a missing test code, and the same observation referenced twice."
+      }
+    },
+    {
+      "name": "8 · Encounters",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": { "raw": "{{baseUrl}}/apis/default/fhir/Encounter", "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Encounter"] },
+        "description": "Visit class comes back as an HL7 v3 ActCode, visit type as SNOMED CT."
+      }
+    },
+    {
+      "name": "9 · Conditions (ICD-10 diagnoses)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "application/fhir+json" }],
+        "url": { "raw": "{{baseUrl}}/apis/default/fhir/Condition", "host": ["{{baseUrl}}"], "path": ["apis","default","fhir","Condition"] },
+        "description": "Diagnoses recorded on the problem list. E11.9 is the chronic condition this project's laboratory order hangs from."
+      }
+    }
+  ]
+}

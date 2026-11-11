@@ -1,0 +1,1695 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-18T17:23:40"
+  },
+  "resourceType": "Bundle",
+  "type": "collection",
+  "total": 16,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://fhir.example.org/apis/default/fhir/Patient"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c20ce-b2de-4cd9-afa4-816393e39e34",
+      "resource": {
+        "id": "a23c20ce-b2de-4cd9-afa4-816393e39e34",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:35:21+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Lucas Thompson</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P01"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Thompson",
+            "given": [
+              "Lucas"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0101",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "guardian.thompson@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2018-08-14",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "12 Oakleaf Crescent"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 8A2",
+            "period": {
+              "start": "2026-07-11T17:35:21.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c20ce-fa6f-4fde-870e-bd90dd5690d6",
+      "resource": {
+        "id": "a23c20ce-fa6f-4fde-870e-bd90dd5690d6",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:35:21+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Amira Haddad</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P02"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Haddad",
+            "given": [
+              "Amira"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0102",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "amira.haddad@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-03-21",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "44 Willowbend Road"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 2K4",
+            "period": {
+              "start": "2026-07-11T17:35:21.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2307-ac65-43a8-9b6c-5fd6eb5408ec",
+      "resource": {
+        "id": "a23c2307-ac65-43a8-9b6c-5fd6eb5408ec",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:34+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>George Lee</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P03"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Lee",
+            "given": [
+              "George"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0103",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "george.lee@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1968-11-09",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "28 Cedar Hollow Drive"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 5M1",
+            "period": {
+              "start": "2026-07-11T17:41:34.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2307-f21c-4f36-bf17-e777b00568aa",
+      "resource": {
+        "id": "a23c2307-f21c-4f36-bf17-e777b00568aa",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:34+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Maria Rossi</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P04"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Rossi",
+            "given": [
+              "Maria"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0104",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "maria.rossi@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1959-06-02",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "75 Gardenview Avenue"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 6P8",
+            "period": {
+              "start": "2026-07-11T17:41:34.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2308-371a-4ec7-97a5-dae31d94c554",
+      "resource": {
+        "id": "a23c2308-371a-4ec7-97a5-dae31d94c554",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:34+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Kevin Brooks</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P05"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Brooks",
+            "given": [
+              "Kevin"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0105",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "kevin.brooks@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1994-02-18",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "9 Pinegate Lane"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 7R3",
+            "period": {
+              "start": "2026-07-11T17:41:34.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2308-7bd6-401b-84c9-b6c665fde6d1",
+      "resource": {
+        "id": "a23c2308-7bd6-401b-84c9-b6c665fde6d1",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:34+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Eleanor Green</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P06"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Green",
+            "given": [
+              "Eleanor"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0106",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "eleanor.green@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1938-12-05",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "101 Maple Court"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 1H5",
+            "period": {
+              "start": "2026-07-11T17:41:34.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2308-c0fd-4f01-ad41-d36bf0b5bf8a",
+      "resource": {
+        "id": "a23c2308-c0fd-4f01-ad41-d36bf0b5bf8a",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:35+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Natalie Wilson</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P07"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Wilson",
+            "given": [
+              "Natalie"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0107",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "natalie.wilson@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1983-07-16",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "62 Brookside Street"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 3W7",
+            "period": {
+              "start": "2026-07-11T17:41:35.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2309-05a9-45da-9f6b-a8480b55c2a4",
+      "resource": {
+        "id": "a23c2309-05a9-45da-9f6b-a8480b55c2a4",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:35+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Robert Patel</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P08"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Patel",
+            "given": [
+              "Robert"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0108",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "robert.patel@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1976-05-25",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "18 Orchard Park Drive"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 9N2",
+            "period": {
+              "start": "2026-07-11T17:41:35.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2309-4be8-49fb-932d-ac893b5691e4",
+      "resource": {
+        "id": "a23c2309-4be8-49fb-932d-ac893b5691e4",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:35+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Grace O\u2019Connor</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P09"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O\u2019Connor",
+            "given": [
+              "Grace"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0109",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "grace.oconnor@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1971-09-10",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "34 Trillium Path"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 4A9",
+            "period": {
+              "start": "2026-07-11T17:41:35.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2309-909b-4f41-bc00-5e909762270f",
+      "resource": {
+        "id": "a23c2309-909b-4f41-bc00-5e909762270f",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-17T22:07:37+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Fatima Al-Masri</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P10"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Al-Masri",
+            "given": [
+              "Fatima"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0110",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "redacted@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1990-01-12",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "21 Newbridge Avenue"
+            ],
+            "city": "Richmond Hill",
+            "postalCode": "L4C 8L6",
+            "period": {
+              "start": "2026-07-17T22:07:37.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c2309-d573-4ec4-bf71-bddb3bd5996a",
+      "resource": {
+        "id": "a23c2309-d573-4ec4-bf71-bddb3bd5996a",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:35+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Igor Petrov</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P11"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Petrov",
+            "given": [
+              "Igor"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0111",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "igor.petrov@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1962-04-27",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "87 Birchmount Way"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 6T2",
+            "period": {
+              "start": "2026-07-11T17:41:35.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c230a-1dc3-459f-a5aa-1325b482d5f4",
+      "resource": {
+        "id": "a23c230a-1dc3-459f-a5aa-1325b482d5f4",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:36+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Mei Chen</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P12"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Chen",
+            "given": [
+              "Mei"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0112",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mei.chen@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1995-09-20",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "53 Hillside Grove"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 2E8",
+            "period": {
+              "start": "2026-07-11T17:41:36.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c230a-63b9-4945-89f9-67b45193012e",
+      "resource": {
+        "id": "a23c230a-63b9-4945-89f9-67b45193012e",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:36+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Samuel Carter</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P13"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Carter",
+            "given": [
+              "Samuel"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0113",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "samuel.carter@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1988-01-30",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "6 Red Maple Terrace"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 0B4",
+            "period": {
+              "start": "2026-07-11T17:41:36.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c230a-a89b-46c5-af99-1b3e0c4bd2b2",
+      "resource": {
+        "id": "a23c230a-a89b-46c5-af99-1b3e0c4bd2b2",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:36+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Rosa Mendes</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P14"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Mendes",
+            "given": [
+              "Rosa"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0114",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "rosa.mendes@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1972-03-11",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "40 Heritage Lane"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 5Y9",
+            "period": {
+              "start": "2026-07-11T17:41:36.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c230a-eccf-4cf7-87dc-395ea7a4c8e2",
+      "resource": {
+        "id": "a23c230a-eccf-4cf7-87dc-395ea7a4c8e2",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:36+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Henry Wong</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "M",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P15"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Wong",
+            "given": [
+              "Henry"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0115",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "henry.wong@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1946-06-18",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "119 Valleyview Road"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 1R9",
+            "period": {
+              "start": "2026-07-11T17:41:36.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Patient/a23c230b-3083-43d5-9ebf-0a208bfb19ae",
+      "resource": {
+        "id": "a23c230b-3083-43d5-9ebf-0a208bfb19ae",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-11T17:41:36+00:00"
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"> <p>Aisha Khan</p></div>"
+        },
+        "extension": [
+          {
+            "valueCode": "F",
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                  "code": "UNK",
+                  "display": "Unknown"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Unknown",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PT"
+                }
+              ]
+            },
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "value": "P16"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Khan",
+            "given": [
+              "Aisha"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-0116",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "guardian.khan@example.test",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2011-11-28",
+        "address": [
+          {
+            "use": "home",
+            "type": "both",
+            "line": [
+              "25 Meadowridge Crescent"
+            ],
+            "city": "Richmond Hill",
+            "state": "ON",
+            "postalCode": "L4C 6A3",
+            "period": {
+              "start": "2026-07-11T17:41:36.000+00:00"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "code": "unknown",
+                  "display": "Unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

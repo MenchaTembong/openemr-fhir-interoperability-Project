@@ -1,0 +1,1218 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-18T18:36:29"
+  },
+  "resourceType": "Bundle",
+  "type": "collection",
+  "total": 25,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://fhir.example.org/apis/default/fhir/Observation"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a20e94d7-a4ff-417b-a3f2-fbda167bbe52",
+      "resource": {
+        "id": "a20e94d7-a4ff-417b-a3f2-fbda167bbe52",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72166-2",
+              "display": "Tobacco smoking status NHIS"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a20e949d-0140-4844-9cce-2976bee26f37",
+          "type": "Patient"
+        },
+        "issued": "2026-06-19T02:11:44+00:00",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1de8-4e4e-ba51-929004f83a45",
+      "resource": {
+        "id": "a233f0dd-1de8-4e4e-ba51-929004f83a45",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85353-1",
+              "display": "Vital signs, weight, height, head circumference, oxygen saturation and BMI panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "hasMember": [
+          {
+            "reference": "Observation/a233f0dd-1df0-4918-827d-3aa14e1a7989",
+            "type": "Observation",
+            "display": "Respiratory Rate"
+          },
+          {
+            "reference": "Observation/a233f0dd-1df3-4015-a503-25d4600c36a2",
+            "type": "Observation",
+            "display": "Heart rate"
+          },
+          {
+            "reference": "Observation/a233f0dd-1dfc-4ee1-a058-ba3b05149a14",
+            "type": "Observation",
+            "display": "Oxygen saturation in Arterial blood"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e08-421c-811d-eaeaa611d1bb",
+            "type": "Observation",
+            "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e0b-4f05-82c9-2a8c2e70e149",
+            "type": "Observation",
+            "display": "Inhaled oxygen flow rate"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e0e-4586-ae74-87f13d51c9f0",
+            "type": "Observation",
+            "display": "Body Temperature"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e10-45bd-a7eb-8ff818ca1d6b",
+            "type": "Observation",
+            "display": "Temperature Location"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e13-4bc4-b053-d7e0b3f3c4b6",
+            "type": "Observation",
+            "display": "Body height"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e16-48f4-8b1f-e4121bf451d8",
+            "type": "Observation",
+            "display": "Head Occipital-frontal circumference"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e1c-449d-afd3-2bab93265470",
+            "type": "Observation",
+            "display": "Body weight"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e1e-40f2-a325-374400d95e15",
+            "type": "Observation",
+            "display": "Body mass index (BMI) [Ratio]"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e21-4cec-a298-75655cf03250",
+            "type": "Observation",
+            "display": "Blood pressure systolic and diastolic"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e2b-4025-92b4-05f7a3751d72",
+            "type": "Observation",
+            "display": "Systolic blood pressure"
+          },
+          {
+            "reference": "Observation/a233f0dd-1e2d-4b55-8954-2d29cdb5d477",
+            "type": "Observation",
+            "display": "Diastolic blood pressure"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1df0-4918-827d-3aa14e1a7989",
+      "resource": {
+        "id": "a233f0dd-1df0-4918-827d-3aa14e1a7989",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory Rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "valueQuantity": {
+          "value": 98.6,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1df3-4015-a503-25d4600c36a2",
+      "resource": {
+        "id": "a233f0dd-1df3-4015-a503-25d4600c36a2",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "valueQuantity": {
+          "value": 72,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1dfc-4ee1-a058-ba3b05149a14",
+      "resource": {
+        "id": "a233f0dd-1dfc-4ee1-a058-ba3b05149a14",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e08-421c-811d-eaeaa611d1bb",
+      "resource": {
+        "id": "a233f0dd-1e08-421c-811d-eaeaa611d1bb",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e0b-4f05-82c9-2a8c2e70e149",
+      "resource": {
+        "id": "a233f0dd-1e0b-4f05-82c9-2a8c2e70e149",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3151-8",
+              "display": "Inhaled oxygen flow rate"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e0e-4586-ae74-87f13d51c9f0",
+      "resource": {
+        "id": "a233f0dd-1e0e-4586-ae74-87f13d51c9f0",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e10-45bd-a7eb-8ff818ca1d6b",
+      "resource": {
+        "id": "a233f0dd-1e10-45bd-a7eb-8ff818ca1d6b",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8327-9",
+              "display": "Temperature Location"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e13-4bc4-b053-d7e0b3f3c4b6",
+      "resource": {
+        "id": "a233f0dd-1e13-4bc4-b053-d7e0b3f3c4b6",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "valueQuantity": {
+          "value": 68,
+          "unit": "in_i",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e16-48f4-8b1f-e4121bf451d8",
+      "resource": {
+        "id": "a233f0dd-1e16-48f4-8b1f-e4121bf451d8",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9843-4",
+              "display": "Head Occipital-frontal circumference"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e1c-449d-afd3-2bab93265470",
+      "resource": {
+        "id": "a233f0dd-1e1c-449d-afd3-2bab93265470",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "valueQuantity": {
+          "value": 165,
+          "unit": "lb_av",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e1e-40f2-a325-374400d95e15",
+      "resource": {
+        "id": "a233f0dd-1e1e-40f2-a325-374400d95e15",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "valueQuantity": {
+          "value": 25.085424,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e21-4cec-a298-75655cf03250",
+      "resource": {
+        "id": "a233f0dd-1e21-4cec-a298-75655cf03250",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure systolic and diastolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 120,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e2b-4025-92b4-05f7a3751d72",
+      "resource": {
+        "id": "a233f0dd-1e2b-4025-92b4-05f7a3751d72",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 120,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e2d-4b55-8954-2d29cdb5d477",
+      "resource": {
+        "id": "a233f0dd-1e2d-4b55-8954-2d29cdb5d477",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e2f-4fee-b17e-f0a91cd3fbe0",
+      "resource": {
+        "id": "a233f0dd-1e2f-4fee-b17e-f0a91cd3fbe0",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8289-1",
+              "display": "Head Occipital-frontal circumference Percentile"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e36-4e58-b1d2-651b10534df6",
+      "resource": {
+        "id": "a233f0dd-1e36-4e58-b1d2-651b10534df6",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59576-9",
+              "display": "Body mass index (BMI) [Percentile] Per age and sex"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e39-42f4-9be0-a8d35f5fe438",
+      "resource": {
+        "id": "a233f0dd-1e39-42f4-9be0-a8d35f5fe438",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "77606-2",
+              "display": "Weight-for-length Per age and sex"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a233f0dd-1e3b-4fa1-9d0b-f2d912e94c17",
+      "resource": {
+        "id": "a233f0dd-1e3b-4fa1-9d0b-f2d912e94c17",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3150-0",
+              "display": "Inhaled Oxygen Saturation"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2428250-3946-4f65-ae2b-55d9b9e205ab",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-07T15:54:40+00:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a248f22c-912a-4aa7-8dc4-fe7ceaa2fdfc",
+      "resource": {
+        "id": "a248f22c-912a-4aa7-8dc4-fe7ceaa2fdfc",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1001",
+              "display": "Hemoglobin Result"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a20e80d0-da21-405e-a6cf-cb571a3716a9",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-11T00:00:00+00:00",
+        "valueQuantity": {
+          "value": 8,
+          "unit": "G/DL",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a248f22c-912a-4aa7-8dc4-fe7ceaa2fdfc",
+      "resource": {
+        "id": "a248f22c-912a-4aa7-8dc4-fe7ceaa2fdfc",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1001",
+              "display": "Hemoglobin Result"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a20e80d0-da21-405e-a6cf-cb571a3716a9",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-11T00:00:00+00:00",
+        "valueQuantity": {
+          "value": 8,
+          "unit": "G/DL",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a248f22c-9133-4149-86c9-5ad7e8af3dc1",
+      "resource": {
+        "id": "a248f22c-9133-4149-86c9-5ad7e8af3dc1",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "100",
+              "display": "Haemoglobin result"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a24282d1-1b0b-41b0-9ed9-14705a818271",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-16T18:00:00+00:00",
+        "valueQuantity": {
+          "value": 8,
+          "unit": "G/DL",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a248f22c-9133-4149-86c9-5ad7e8af3dc1",
+      "resource": {
+        "id": "a248f22c-9133-4149-86c9-5ad7e8af3dc1",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "100",
+              "display": "Haemoglobin result"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a24282d1-1b0b-41b0-9ed9-14705a818271",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-16T18:00:00+00:00",
+        "valueQuantity": {
+          "value": 8,
+          "unit": "G/DL",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/apis/default/fhir/Observation/a249fa3b-44f6-42fa-b9e6-19a6307959ea",
+      "resource": {
+        "id": "a249fa3b-44f6-42fa-b9e6-19a6307959ea",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2026-07-18T18:36:29+00:00"
+        },
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1002",
+              "display": "Vitamin D Result"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a24282d1-1b0b-41b0-9ed9-14705a818271",
+          "type": "Patient"
+        },
+        "effectiveDateTime": "2026-07-18T00:30:00+00:00",
+        "valueQuantity": {
+          "value": 33,
+          "unit": "HMOL/L",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    }
+  ]
+}

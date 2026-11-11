@@ -1,0 +1,51 @@
+# A local OpenEMR you can point the Postman collection at.
+#
+#   docker compose up -d        then wait a few minutes for first-run setup
+#   https://localhost:9300      log in with the credentials below
+#
+# FHIR endpoints require TLS, so use the HTTPS port. The certificate is
+# self-signed, so Postman needs SSL verification turned off for localhost
+# (Settings > General > SSL certificate verification).
+#
+# These credentials are development defaults published by the OpenEMR project.
+# They are fine on a laptop and must never reach anything exposed.
+
+services:
+  mysql:
+    image: mariadb:10.6
+    restart: always
+    command: ['mysqld', '--character-set-server=utf8mb4']
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - databasevolume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  openemr:
+    image: openemr/openemr:7.0.2
+    restart: always
+    ports:
+      - "8080:80"
+      - "9300:443"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASS: root
+      MYSQL_USER: openemr
+      MYSQL_PASS: openemr
+      OE_USER: admin
+      OE_PASS: pass
+    volumes:
+      - logvolume:/var/log
+      - sitevolume:/var/www/localhost/htdocs/openemr/sites
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  databasevolume:
+  logvolume:
+  sitevolume:
